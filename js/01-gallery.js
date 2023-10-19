@@ -32,14 +32,14 @@ function openModal(event) {
     },
     {
       onClose: (instance) => {
-        window.removeEventListener("keydown", ({ code }) => {
-          if (code === "Escape") {
-            instance.close();
-          }
-        });
+        window.removeEventListener("keydown", closeModal);
       },
     }
   );
-
+  function closeModal(event) {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  }
   instance.show();
 }
